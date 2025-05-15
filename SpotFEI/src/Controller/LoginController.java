@@ -2,7 +2,7 @@ package Controller;
 
 import View.Entrada;
 import View.Menu;
-import Model.User;
+import Model.Usuario;
 
 import DAO.Conexao;
 import DAO.UserDAO;
@@ -22,7 +22,7 @@ public class LoginController {
     }
     
     public void loginUser(){
-        User usuario = new User( 
+        Usuario usuario = new Usuario( 
                 tela_login.getTxt_user_login().getText(),
                 tela_login.getTxt_senha_login().getText(),
                 null);

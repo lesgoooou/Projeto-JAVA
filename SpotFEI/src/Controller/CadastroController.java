@@ -2,7 +2,7 @@ package Controller;
 
 import View.Entrada;
 import View.Menu;
-import Model.User;
+import Model.Usuario;
 
 import DAO.Conexao;
 import DAO.UserDAO;
@@ -32,7 +32,7 @@ public class CadastroController {
         String user_id = tela_cadastro.getTxt_user_cadastro().getText();
         String senha = tela_cadastro.getTxt_senha_cadastro().getText();
         String conf_senha = tela_cadastro.getTxt_conf_senha_cadastro().getText();
-        User usuario = new User(user_id,senha,conf_senha);
+        Usuario usuario = new Usuario(user_id,senha,conf_senha);
         
         if (!senha.equals(conf_senha)) {
         JOptionPane.showMessageDialog(tela_cadastro, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);

@@ -1,10 +1,10 @@
 package Model;
 
 
-public class User {
+public class Usuario {
     private String usuario, senha, conf_senha;
 
-    public User(String usuario, String senha, String conf_senha) {
+    public Usuario(String usuario, String senha, String conf_senha) {
         this.usuario = usuario;
         this.senha = senha;
         this.conf_senha = conf_senha;
@@ -16,14 +16,12 @@ public class User {
     public void setUsuario(String usuario) {
         this.usuario = usuario;
     }
-    
     public String getSenha(){
         return senha;
     }
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
     public String getConf_senha(){
         return conf_senha;
     }

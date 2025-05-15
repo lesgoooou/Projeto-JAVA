@@ -1,22 +1,29 @@
 package View;
 
 import java.awt.Color;
+import Controller.MenuController;
+import Model.Usuario;
 
 public class Menu extends javax.swing.JFrame {
-    private Entrada login; 
     private Msc_Curtidas musicas_curtidas;
     private Playlists playlists;
     private Historico historico;
     
-
+    private MenuController control_1;
     public Menu() {
         initComponents();
-        this.setBackground(Color.BLACK);
-        this.setForeground(Color.BLACK);
-        //jPanel1.setBackground(Color.BLACK);
+        control_1 = new MenuController(this);
     }
 
+    public static void main(String args[]) {
 
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run() {
+                new Menu().setVisible(true);
+            }
+        });
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -158,6 +165,7 @@ public class Menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -168,10 +176,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // SAIR
-        this.setVisible(false);
-        if (login != null) {
-            login.setVisible(true);
-        }
+        control_1.irParaInicio();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -198,10 +203,6 @@ public class Menu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
     
-    
-    public void setLogin(Entrada login) {
-        this.login = login;
-    }
     public void setMsc_curtidas(Msc_Curtidas musicas_curtidas) {
         this.musicas_curtidas = musicas_curtidas;
     }
@@ -211,17 +212,7 @@ public class Menu extends javax.swing.JFrame {
     public void setHistorico(Historico historico) {
         this.historico = historico;
     }
-
-    public static void main(String args[]) {
-
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu().setVisible(true);
-            }
-        });
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

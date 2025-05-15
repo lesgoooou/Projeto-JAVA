@@ -8,16 +8,15 @@ import View.Historico;
 
 public class MenuController {
     private Menu tela_menu;
-    //private Entrada tela_inicial;
+    private Entrada tela_inicial;
 
     public MenuController(Menu tela_menu) {
         this.tela_menu = tela_menu;
-        //this.tela_inicial = new Entrada();
     }
-    
     public void irParaInicio(){
         tela_menu.setVisible(false);
-        //tela_inicial.setVisible(true);
+        new Entrada().setVisible(true);
     }
+
 }
 

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import Model.User;
+import Model.Usuario;
 
 public class UserDAO {
     private Connection conn;
@@ -16,7 +16,7 @@ public class UserDAO {
     public UserDAO(Connection conn) {
         throw new UnsupportedOperationException("Not supported yet.");
     }*/
-    public ResultSet consultar(User usuario) throws SQLException{
+    public ResultSet consultar(Usuario usuario) throws SQLException{
         String sql = "select * from usuario where user_id = ? and senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
@@ -25,7 +25,7 @@ public class UserDAO {
         ResultSet resultado = statement.getResultSet();
         return resultado;
     }
-    public void inserir(User usuario) throws SQLException{
+    public void inserir(Usuario usuario) throws SQLException{
         String sql = "insert into usuario (user_id, senha) values ('"
                       + usuario.getUsuario() + "', '"
                       + usuario.getSenha()   + "')";
@@ -33,7 +33,7 @@ public class UserDAO {
         statement.execute();
         conn.close();
     }
-    public void atualizar(User usuario) throws SQLException{
+    public void atualizar(Usuario usuario) throws SQLException{
         String sql = "update usuario set senha = ? where user_id = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getSenha());
@@ -41,7 +41,7 @@ public class UserDAO {
         statement.execute();
         conn.close();
     }
-    public void remover(User usuario) throws SQLException{
+    public void remover(Usuario usuario) throws SQLException{
         String sql = "delete from usuario where user_id = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
         statement.setString(1, usuario.getUsuario());
