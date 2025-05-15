@@ -3,7 +3,7 @@ package View;
 import java.awt.Color;
 
 public class Menu extends javax.swing.JFrame {
-    private Login login; 
+    private Entrada login; 
     private Msc_Curtidas musicas_curtidas;
     private Playlists playlists;
     private Historico historico;
@@ -199,7 +199,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
     
     
-    public void setLogin(Login login) {
+    public void setLogin(Entrada login) {
         this.login = login;
     }
     public void setMsc_curtidas(Msc_Curtidas musicas_curtidas) {

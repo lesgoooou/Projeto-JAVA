@@ -1,6 +1,7 @@
 package Controller;
 
-import View.Login;
+import View.Entrada;
+import View.Menu;
 import Model.User;
 
 import DAO.Conexao;
@@ -12,10 +13,12 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class LoginController {
-    private Login tela_login;
+    private Entrada tela_login;
+    private Menu tela_menu;
     
-    public LoginController(Login tela_login){
+    public LoginController(Entrada tela_login){
         this.tela_login = tela_login;
+        this.tela_menu = new Menu();
     }
     
     public void loginUser(){
@@ -52,8 +55,11 @@ public class LoginController {
         }
     }
     public void irParaMenu() {
+        tela_login.getTxt_user_login().setText("");
+        tela_login.getTxt_senha_login().setText("");
+        
         tela_login.setVisible(false);
-        //tela_menu.setVisible(true);
+        tela_menu.setVisible(true);
     }
     
 }

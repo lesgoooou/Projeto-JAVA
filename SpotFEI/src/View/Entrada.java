@@ -1,23 +1,32 @@
 package View;
 import Controller.LoginController;
+import Controller.CadastroController;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
-public class Login extends javax.swing.JFrame {
-    //private LoginController controller;
-    private Menu menu;
+public class Entrada extends javax.swing.JFrame {
  
-    public Login() {
+    public Entrada() {
         initComponents();
-        control = new LoginController(this);
+        control_1 = new LoginController(this);
+        control_2 = new CadastroController(this);
     }
 
+    // BOTÕES LOGIN
     public JButton getBt_login(){
         return jButton3;
     }
     public void setBt_login(JButton jButton3){
         this.jButton3 = jButton3;
+    }
+    
+    // BOTÕES CADASTRO
+    public JButton getBt_cadastro(){
+        return jButton4;
+    }
+    public void setBt_cadastro(JButton jButton4){
+        this.jButton4 = jButton4;
     }
     
     
@@ -268,16 +277,16 @@ public class Login extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel12)
+                                .addComponent(jLabel13)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(128, 128, 128)
-                            .addComponent(jLabel14))
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel14)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -365,10 +374,10 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     public void setController(LoginController controller) {
-        this.control = controller;
+        this.control_1 = controller;
     }
     
-    // CAIXAS DE TEXTO
+    // CAIXAS DE TEXTO - LOGIN
     public JTextField getTxt_user_login(){
         return jTextField6;
     }
@@ -376,37 +385,41 @@ public class Login extends javax.swing.JFrame {
         return jTextField7;
     }
     
+    // CAIXAS DE TEXTO - CADASTRO
+    public JTextField getTxt_user_cadastro(){
+        return jTextField8;
+    }
+    public JTextField getTxt_senha_cadastro(){
+        return jTextField9;
+    }
+    public JTextField getTxt_conf_senha_cadastro(){
+        return jTextField10;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // LOGIN
-        control.loginUser();
-        this.setVisible(false);
+        control_1.loginUser();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // CADASTRAR
-        this.setVisible(false);
-        if (menu != null) {
-            menu.setVisible(true);
-        }
+        control_2.salvarUsuario();
     }//GEN-LAST:event_jButton4ActionPerformed
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-    
+ 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new Entrada().setVisible(true);
             }
         });
     }
     
-    private LoginController control;
+    private LoginController control_1;
+    private CadastroController control_2;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
