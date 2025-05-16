@@ -12,10 +12,6 @@ public class UserDAO {
     public UserDAO(Connection conn) {
         this.conn = conn;
     }
-    /*
-    public UserDAO(Connection conn) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }*/
     public ResultSet consultar(Usuario usuario) throws SQLException{
         String sql = "select * from usuario where user_id = ? and senha = ?";
         PreparedStatement statement = conn.prepareStatement(sql);
