@@ -13,5 +13,10 @@ public class Musica {
         this.curtida = curtida;
     }
     
-    
+    @Override
+    public String toString() {
+    String curtidaSymbol = this.curtida ? " - ♥" : "";
+    return nome + " - " + artista + " - " + genero + curtidaSymbol;
+    }
 }
+

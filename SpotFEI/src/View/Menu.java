@@ -17,19 +17,25 @@ public class Menu extends javax.swing.JFrame {
     private Historico historico;
     private MenuController control_1;
     
-    // parte da lista
-    private JList<Musica> lista;
-    private DefaultListModel<Musica> modelo;
+    private JList<String> lista;
+    private DefaultListModel<String> modelo;
 
+    public JList<String> getLista() {
+        return lista;
+    }   
     public Menu() {
         initComponents();
         control_1 = new MenuController(this);
         
-        // bgl lista
         modelo = new DefaultListModel<>();
-        lista = new JList<>(modelo);
+        this.lista = jList1;
+        
+        control_1.configurarListeners();
     }
-
+    public JFrame getFrame() {
+        return this;
+    }
+    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -254,10 +260,7 @@ public class Menu extends javax.swing.JFrame {
     public JComboBox<String> getFiltro(){
         return jComboBox1;
     }
-    // ultimo bgl lista
-    public JList<Musica> getLista() {
-        return lista;
-    }   
+    
     
     public void setMsc_curtidas(Msc_Curtidas musicas_curtidas) {
         this.musicas_curtidas = musicas_curtidas;

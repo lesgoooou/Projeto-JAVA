@@ -21,4 +21,15 @@ public class MusicaDAO {
         ResultSet resultado = statement.getResultSet();
         return resultado;
     }
+    
+    public void atualizarCurtida(String nome, String artista, boolean curtir) throws SQLException {
+    String sql = "UPDATE musica SET curtida = ? WHERE nome = ? AND artista = ?";
+    
+    try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+        stmt.setBoolean(1, curtir);
+        stmt.setString(2, nome);
+        stmt.setString(3, artista);
+        stmt.executeUpdate();
+    }
+}
 }
