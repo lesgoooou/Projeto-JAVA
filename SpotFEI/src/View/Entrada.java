@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 public class Entrada extends javax.swing.JFrame {
- 
+
     public Entrada() {
         initComponents();
         control_1 = new LoginController(this);

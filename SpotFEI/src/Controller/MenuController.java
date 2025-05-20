@@ -7,7 +7,7 @@ import Model.Musica;
 import View.Menu;
 import View.Entrada;
 import View.Playlists;
-import View.Msc_Curtidas;
+import View.MusicasCurtidas;
 import View.Historico;
 
 import javax.swing.JOptionPane;
@@ -23,12 +23,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.JList;
 
 
+
+import DAO.MusicasCurtidasDAO;
+
 public class MenuController {
     private Menu tela_menu;
     private Entrada tela_inicial;
-    
-    // lista eba
-    //private DefaultListModel<Musica> modelo;
+    private MusicasCurtidas tela_curtida;
 
     public MenuController(Menu tela_menu) {
         this.tela_menu = tela_menu;
@@ -47,7 +48,7 @@ public class MenuController {
             DefaultListModel<String> modelo = new DefaultListModel<>();
             
             int count = 0;
-            while (res.next()){ // A partir daqui foi pra bosta
+            while (res.next()){
                 int id = res.getInt(1);
                 String genero = res.getString(2);
                 String artista = res.getString(3);
@@ -154,11 +155,22 @@ public class MenuController {
     }
     
     
-    
     public void irParaInicio(){
         tela_menu.setVisible(false);
         new Entrada().setVisible(true);
     }
-
+    public void irParaMscCurtida(){
+        tela_menu.setVisible(false);
+        new MusicasCurtidas().setVisible(true);
+    }
+    public void irParaHistorico(){
+        tela_menu.setVisible(false);
+        new Historico().setVisible(true);
+    }
+    public void irParaPlaylist(){
+        tela_menu.setVisible(false);
+        new Playlists().setVisible(true);
+    }  
+    
 }
 

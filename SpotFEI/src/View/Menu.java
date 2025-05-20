@@ -11,11 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.*;
 
+import Controller.MusicasCurtidasController;
+        
 public class Menu extends javax.swing.JFrame {
-    private Msc_Curtidas musicas_curtidas;
+    private MusicasCurtidas musicas_curtidas;
     private Playlists playlists;
     private Historico historico;
     private MenuController control_1;
+
     
     private JList<String> lista;
     private DefaultListModel<String> modelo;
@@ -227,32 +230,23 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // MUSICAS CURTIDAS
-        this.setVisible(false);
-        if(musicas_curtidas != null){
-            musicas_curtidas.setVisible(true);
-        }
+        control_1.irParaMscCurtida();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // PLAYLISTS
-        this.setVisible(false);
-        if(playlists != null){
-            playlists.setVisible(true);
-        }
+        control_1.irParaPlaylist();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // HISTORICO
-        this.setVisible(false);
-        if(historico != null){
-            historico.setVisible(true);
-        }
+        control_1.irParaHistorico();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-    
+   
     
     public JTextField getTxt_pesquisa(){
         return jTextField1;
@@ -262,7 +256,7 @@ public class Menu extends javax.swing.JFrame {
     }
     
     
-    public void setMsc_curtidas(Msc_Curtidas musicas_curtidas) {
+    public void setMsc_curtidas(MusicasCurtidas musicas_curtidas) {
         this.musicas_curtidas = musicas_curtidas;
     }
     public void setPlaylists(Playlists playlists) {
