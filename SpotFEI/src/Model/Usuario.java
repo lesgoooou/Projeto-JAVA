@@ -29,7 +29,6 @@ public class Usuario {
         this.conf_senha = conf_senha;
     }
     
-    
     public String toString() {
         return "Usuario{" + "usuario=" + usuario + ", senha=" + senha + '}';
     }

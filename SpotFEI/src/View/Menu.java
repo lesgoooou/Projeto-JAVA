@@ -12,13 +12,14 @@ import java.util.List;
 import javax.swing.*;
 
 import Controller.MusicasCurtidasController;
+import Controller.HistoricoController;
         
 public class Menu extends javax.swing.JFrame {
     private MusicasCurtidas musicas_curtidas;
     private Playlists playlists;
     private Historico historico;
     private MenuController control_1;
-
+    private HistoricoController control_2;
     
     private JList<String> lista;
     private DefaultListModel<String> modelo;
@@ -217,6 +218,7 @@ public class Menu extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // PESQUISA
         control_1.Pesquisa();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

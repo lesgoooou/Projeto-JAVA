@@ -3,6 +3,7 @@ package Controller;
 import DAO.Conexao;
 import DAO.MusicaDAO;
 import Model.Musica;
+import Model.SessaoUsuario;
 
 import View.Menu;
 import View.Entrada;
@@ -23,13 +24,15 @@ import java.awt.event.MouseEvent;
 import javax.swing.JList;
 
 
-
+import DAO.HistoricoDAO;
 import DAO.MusicasCurtidasDAO;
+import Model.Usuario;
 
 public class MenuController {
     private Menu tela_menu;
     private Entrada tela_inicial;
     private MusicasCurtidas tela_curtida;
+    private Historico tela_historico;
 
     public MenuController(Menu tela_menu) {
         this.tela_menu = tela_menu;
@@ -47,6 +50,14 @@ public class MenuController {
             JList<String> lista = tela_menu.getLista();
             DefaultListModel<String> modelo = new DefaultListModel<>();
             
+            Usuario usuarioLogado = SessaoUsuario.getUsuario();
+            String userId = null;
+            
+            if (usuarioLogado != null){
+                userId = usuarioLogado.getUsuario();
+            }            
+            HistoricoDAO dao_2 = new HistoricoDAO(conn);
+            
             int count = 0;
             while (res.next()){
                 int id = res.getInt(1);
@@ -54,13 +65,16 @@ public class MenuController {
                 String artista = res.getString(3);
                 String nome = res.getString(4);
                 Boolean curtida = res.getBoolean(5);
-                
-                
+             
                 Musica musica = new Musica(nome, genero, artista, id, curtida);
                 modelo.addElement(musica.toString()); 
+                
+                if (userId != null) {         
+                    dao_2.salvarHistorico(userId, id);
+                }
+                
                 count++;
             }
-            
             lista.setModel(modelo);
             
             res.close();
@@ -154,6 +168,39 @@ public class MenuController {
         return musicaStr.split(" - ")[1];
     }
     
+    private void carregarHistorico() {
+        Conexao conexao = new Conexao();
+        Usuario usuarioLogado = SessaoUsuario.getUsuario();
+
+        if (usuarioLogado == null) {
+            JOptionPane.showMessageDialog(null, "Usuário não está logado!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String userId = usuarioLogado.getUsuario();
+
+        try {
+            Connection conn = conexao.getConnection();
+            HistoricoDAO dao = new HistoricoDAO(conn);
+            ResultSet res = dao.buscarHistoricoPorUsuario(userId);
+
+            DefaultListModel<String> modelo = new DefaultListModel<>();
+            while (res.next()) {
+                String nome = res.getString("nome");
+                String artista = res.getString("artista");
+                String genero = res.getString("genero");
+                boolean curtida = res.getBoolean("curtida");
+
+                String statusCurtida = curtida ? "❤️" : "";
+                modelo.addElement(nome + " - " + artista + " (" + genero + ") " + statusCurtida);
+            }
+
+            tela_historico.getListaHistorico().setModel(modelo); // Atualiza a JList
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Erro ao carregar histórico: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     
     public void irParaInicio(){
         tela_menu.setVisible(false);
@@ -163,9 +210,20 @@ public class MenuController {
         tela_menu.setVisible(false);
         new MusicasCurtidas().setVisible(true);
     }
-    public void irParaHistorico(){
+    
+    public void irParaHistorico() {
+    if (tela_historico == null) {
         tela_menu.setVisible(false);
-        new Historico().setVisible(true);
+        tela_historico = new Historico(); 
+    }
+
+    tela_historico.setVisible(true); // mostra a tela
+
+    try {
+        carregarHistorico();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro ao carregar histórico: " + e.getMessage());
+    }
     }
     public void irParaPlaylist(){
         tela_menu.setVisible(false);

@@ -3,6 +3,7 @@ package Controller;
 import View.Entrada;
 import View.Menu;
 import Model.Usuario;
+import Model.SessaoUsuario;
 
 import DAO.Conexao;
 import DAO.UserDAO;
@@ -32,14 +33,17 @@ public class LoginController {
             UserDAO dao = new UserDAO(conn);
             ResultSet res = dao.consultar(usuario);
             if(res.next()){
+                Usuario usuarioLogado = new Usuario(
+                res.getString("user_id"),  
+                res.getString("senha"),
+                null
+                );
+                SessaoUsuario.setUsuario(usuarioLogado);
                 JOptionPane.showMessageDialog(tela_login, 
                                               "Login realizado!",
                                               "Aviso",
                                               JOptionPane.INFORMATION_MESSAGE);
                 irParaMenu();
-                /*User usuario2 = new User(res.getString('usuario'),
-                                         res.getString('senha'));
-                                         */
             } else {
                 JOptionPane.showMessageDialog(tela_login,
                                               "Login não efetuado!",
