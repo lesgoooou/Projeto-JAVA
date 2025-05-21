@@ -1,10 +1,11 @@
 package Model;
 
 
-public class Usuario {
+public class Usuario extends Pessoa {
     private String usuario, senha, conf_senha;
 
     public Usuario(String usuario, String senha, String conf_senha) {
+        super(usuario,0);
         this.usuario = usuario;
         this.senha = senha;
         this.conf_senha = conf_senha;
@@ -32,7 +33,4 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "usuario=" + usuario + ", senha=" + senha + '}';
     }
-    public boolean validarUsuario(String usuario, String senha) {
-        return usuario.equals("admin") && senha.equals("1234");
-    } 
 }

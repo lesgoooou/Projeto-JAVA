@@ -198,6 +198,12 @@ public class MenuController {
             JOptionPane.showMessageDialog(null, "Erro ao carregar histórico: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
+    public void aviso(){
+        JOptionPane.showMessageDialog(null,"Antes de pesquisar alguma música, selecione o filtro que deseja!\n"+
+                "Ao dar um double click em qualquer música você pode curti-la!\n"+
+                "Agradeço desde já por testar meu App, te desejo uma boa experiência\n"+
+                "Feito por Gabriel Andrade Rosa Oliveira");
+    }
     
     public void irParaInicio(){
         tela_menu.setVisible(false);

@@ -15,16 +15,31 @@ import java.sql.ResultSet;
 import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import DAO.MusicaDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.security.Timestamp;
+import java.util.List;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 public class PlaylistController {
     private Playlists tela_playlist;
     JTextField nomePlaylist = new JTextField();
     
+    public void aviso(){
+        JOptionPane.showMessageDialog(null,"Nesta tela você pode alternar entre Músicas e Playlists\n"+
+                "Dando um clique duplo quando selecionar/pesquisar músicas, você pode adiciona-las a alguma Playlist\n"+
+                "Agora quando selecionar playlists, pode ver quais são as músicas em cada playlist");
+    }
+    
     public PlaylistController(Playlists tela_playlist) {
         this.tela_playlist = tela_playlist;
     }
+    private String modoAtual = "musicas";
+     
     public void buscarPesquisa(){
         Conexao conexao = new Conexao();
         
@@ -163,7 +178,140 @@ public class PlaylistController {
                                               JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+    public String boxMusica(List<String> playlistsUser){
+            JComboBox<String> comboBox = new JComboBox<>();
 
+    for (String nomePlaylist : playlistsUser) {
+        comboBox.addItem(nomePlaylist);
+    }
+
+    int opcao = JOptionPane.showConfirmDialog(
+        null,
+        comboBox,
+        "Selecione a Playlist",
+        JOptionPane.OK_CANCEL_OPTION,
+        JOptionPane.PLAIN_MESSAGE
+    );
+
+    if (opcao == JOptionPane.OK_OPTION) {
+        return (String) comboBox.getSelectedItem();
+    }
+
+    return null;
+    }
+    
+    public void configurarListeners() {
+            JList<String> listaMusicas = tela_playlist.getLista();
+    
+            JButton btnMusica = tela_playlist.getBotao_Musica();
+            JButton btnPlaylist = tela_playlist.getBotao_Playlist();
+    
+            btnMusica.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            modoAtual = "musicas";
+                buscarTodos();
+            }
+            });
+            btnPlaylist.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                modoAtual = "playlists";
+                buscarPlaylists(); // já está pronto
+            }
+            });
+            listaMusicas.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evt) {
+            if (evt.getClickCount() == 2) {
+            String itemSelecionado = listaMusicas.getSelectedValue();
+            if (itemSelecionado == null) return;
+
+            try {
+                Usuario usuarioLogado = SessaoUsuario.getUsuario();
+                String userId = usuarioLogado.getUsuario();
+
+                Connection conn = new Conexao().getConnection();
+                PlaylistDAO dao = new PlaylistDAO(conn);
+                if (modoAtual.equals("musicas")){
+                    List<String> playlistsDoUsuario = dao.buscarNomesPlaylists(userId); 
+                    String playlistEscolhida = boxMusica(playlistsDoUsuario);                
+                    if (playlistEscolhida != null) {
+                        String musc = extrairNomeMusica(itemSelecionado);
+                        dao.adicionarMusicaNaPlaylist(musc, playlistEscolhida, userId);
+                    }
+                }else if (modoAtual.equals("playlists")){
+                    String nomePlaylist = extrairNomePlaylist(itemSelecionado);
+                    List<String> musicas = dao.buscarMusicasDaPlaylist(nomePlaylist, userId);
+
+                    if (musicas != null && !musicas.isEmpty()) {
+                        StringBuilder mensagem = new StringBuilder();
+                        for (String musica : musicas){
+                            mensagem.append("- ").append(musica).append("\n");
+                        }
+                        Object[] opcoes = {"Excluir Playlist", "Fechar"};
+                        int escolha = JOptionPane.showOptionDialog(
+                                null,
+                                mensagem.toString(),
+                                "Musicas da Playlist: " + nomePlaylist,
+                                JOptionPane.YES_NO_OPTION,
+                                JOptionPane.INFORMATION_MESSAGE,
+                                null,
+                                opcoes,
+                                opcoes[1]
+                        );
+                        if (escolha == JOptionPane.YES_OPTION){
+                            int confirmar = JOptionPane.showConfirmDialog(
+                            null,
+                            "Tem certeza que deseja excluir a playlist \"" + nomePlaylist + "\"?",
+                            "Confirmar Exclusão",
+                            JOptionPane.YES_NO_OPTION
+                            );
+                            if (confirmar == JOptionPane.YES_OPTION) {
+                            try {
+                                dao.deletarPlaylist(nomePlaylist, userId);
+                                JOptionPane.showMessageDialog(null, "Playlist excluída com sucesso!");
+                                buscarPlaylists(); // Atualiza a lista
+                            } catch (SQLException e) {
+                                JOptionPane.showMessageDialog(null, "Erro ao excluir a playlist.");
+                                e.printStackTrace();
+                            }
+                            }
+                        }
+                    }
+                        
+                        /*JOptionPane.showMessageDialog(null,
+                            String.join("\n", musicas),
+                            "Músicas da Playlist: " + nomePlaylist,
+                            JOptionPane.INFORMATION_MESSAGE);*/
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                                                "Esta playlist está vazia.",
+                                                "Aviso",
+                                                JOptionPane.WARNING_MESSAGE);
+            }
+                } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Erro ao buscar playlists.");
+            }
+        }
+    }
+    });
+
+    }
+    private String extrairNomeMusica(String musicaStr) {
+        return musicaStr.split(" - ")[0];
+    }
+    public String extrairNomePlaylist(String texto) {
+    try {
+        String[] partes = texto.split("Nome: ");
+        if (partes.length > 1) {
+            String restante = partes[1];
+            return restante.split(" -")[0].trim();
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return texto; // fallback se falhar
+    }
     public void VoltarMenu(){
         tela_playlist.setVisible(false);
         new Menu().setVisible(true);
