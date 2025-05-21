@@ -18,11 +18,8 @@ import java.sql.ResultSet;
 import javax.swing.JList;
 import javax.swing.DefaultListModel;
 
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JList;
-
 
 import DAO.HistoricoDAO;
 import DAO.MusicasCurtidasDAO;
