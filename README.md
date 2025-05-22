@@ -2,6 +2,9 @@
 
 Este é um projeto de aplicativo de músicas desenvolvido em Java com interface gráfica utilizando `Swing` e persistência de dados em um banco PostgreSQL. O sistema permite que os usuários façam login ou cadastro, curtam músicas, visualizem o histórico de busca e gerenciem playlists.
 
+LINK PARA VÍDEO: https://youtu.be/eG4VZLsgr3w
+LINK PARA GITHUB: https://github.com/lesgoooou/Projeto-JAVA.git
+
 ## 🛠️ Funcionalidades
 
 ### 🔐 Tela de Entrada (Login/Cadastro)
@@ -52,5 +55,3 @@ CREATE TABLE playlists (
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-LINK PARA VÍDEO: https://youtu.be/eG4VZLsgr3w
-LINK PARA GITHUB: https://github.com/lesgoooou/Projeto-JAVA.git
