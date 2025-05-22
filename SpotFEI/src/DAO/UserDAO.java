@@ -1,10 +1,11 @@
 package DAO;
 
+import Model.Usuario;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
-import Model.Usuario;
 
 public class UserDAO {
     private Connection conn;

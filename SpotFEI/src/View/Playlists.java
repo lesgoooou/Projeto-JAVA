@@ -3,10 +3,6 @@ package View;
 import Controller.PlaylistController;
 
 import javax.swing.JTextField;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 
 public class Playlists extends javax.swing.JFrame {

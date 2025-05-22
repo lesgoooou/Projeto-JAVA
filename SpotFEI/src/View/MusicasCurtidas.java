@@ -2,7 +2,6 @@ package View;
 
 import Controller.MusicasCurtidasController;
 
-import java.util.List;
 import javax.swing.*;
 
 public class MusicasCurtidas extends javax.swing.JFrame {

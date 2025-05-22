@@ -2,8 +2,11 @@ package Controller;
 
 import DAO.Conexao;
 import DAO.MusicaDAO;
+import DAO.HistoricoDAO;
+ 
 import Model.Musica;
 import Model.SessaoUsuario;
+import Model.Usuario;
 
 import View.Menu;
 import View.Entrada;
@@ -11,19 +14,15 @@ import View.Playlists;
 import View.MusicasCurtidas;
 import View.Historico;
 
-import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import javax.swing.JList;
-import javax.swing.DefaultListModel;
-
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import DAO.HistoricoDAO;
-import DAO.MusicasCurtidasDAO;
-import Model.Usuario;
+import javax.swing.JOptionPane;
+import javax.swing.JList;
+import javax.swing.DefaultListModel;
 
 public class MenuController {
     private Menu tela_menu;
@@ -136,7 +135,7 @@ public class MenuController {
             MusicaDAO dao = new MusicaDAO(conn);
             dao.atualizarCurtida(nome, artista, curtir);
         
-            Pesquisa(); // Atualizo direto a lista chamando a função
+            Pesquisa(); 
         
             String mensagem = curtir ? "Música adicionada às curtidas!" : "Música removida das curtidas!";
             JOptionPane.showMessageDialog(
@@ -192,7 +191,7 @@ public class MenuController {
                 modelo.addElement(nome + " - " + artista + " (" + genero + ") " + statusCurtida);
             }
 
-            tela_historico.getListaHistorico().setModel(modelo); // Atualiza a JList
+            tela_historico.getListaHistorico().setModel(modelo);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar histórico: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
@@ -200,8 +199,13 @@ public class MenuController {
     }
     public void aviso(){
         JOptionPane.showMessageDialog(null,"Antes de pesquisar alguma música, selecione o filtro que deseja!\n"+
+                "\n"+
+                "Se quiser visualizar todas as músicas pode apertar o botão de pesquisa sem nada escrito na caixa de texto!\n"+
+                "\n"+
                 "Ao dar um double click em qualquer música você pode curti-la!\n"+
+                "\n"+
                 "Agradeço desde já por testar meu App, te desejo uma boa experiência\n"+
+                "\n"+
                 "Feito por Gabriel Andrade Rosa Oliveira");
     }
     
@@ -220,7 +224,7 @@ public class MenuController {
         tela_historico = new Historico(); 
     }
 
-    tela_historico.setVisible(true); // mostra a tela
+    tela_historico.setVisible(true);
 
     try {
         carregarHistorico();

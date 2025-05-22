@@ -1,23 +1,13 @@
 package View;
 
-import Model.Musica;
 import javax.swing.JTextField;
-import java.awt.Color;
-import Controller.MenuController;
-import Model.Usuario;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 
-import Controller.MusicasCurtidasController;
+import Controller.MenuController;
+
 import Controller.HistoricoController;
         
 public class Menu extends javax.swing.JFrame {
-    private MusicasCurtidas musicas_curtidas;
-    private Playlists playlists;
-    private Historico historico;
     private MenuController control_1;
     private HistoricoController control_2;
     
@@ -260,17 +250,6 @@ public class Menu extends javax.swing.JFrame {
     }
     public JComboBox<String> getFiltro(){
         return jComboBox1;
-    }
-    
-    
-    public void setMsc_curtidas(MusicasCurtidas musicas_curtidas) {
-        this.musicas_curtidas = musicas_curtidas;
-    }
-    public void setPlaylists(Playlists playlists) {
-        this.playlists = playlists;
-    }
-    public void setHistorico(Historico historico) {
-        this.historico = historico;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

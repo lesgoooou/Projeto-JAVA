@@ -1,11 +1,10 @@
 package DAO;
 
+import Model.Musica;
+
+import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import Model.Musica;
-import View.MusicasCurtidas;
 import java.util.List;
 import java.util.ArrayList;
 

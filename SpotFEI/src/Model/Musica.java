@@ -2,7 +2,6 @@ package Model;
 
 public class Musica extends Pessoa{
     private String genero, artista;
-    //private int id;
     private Boolean curtida;
     
     public Musica(String nome, String genero, String artista, int id, Boolean curtida) {
@@ -26,13 +25,6 @@ public class Musica extends Pessoa{
     public void setCurtida(Boolean curtida) {
         this.curtida = curtida;
     }
-    /*public Musica(String nome, String genero, String artista, int id, Boolean curtida) {
-        this.nome = nome;
-        this.genero = genero;
-        this.artista = artista;
-        this.id = id;
-        this.curtida = curtida;
-    }*/
     
     @Override
     public String toString() {

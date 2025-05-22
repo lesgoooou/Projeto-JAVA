@@ -3,27 +3,29 @@ package Controller;
 import Model.SessaoUsuario;
 import Model.Musica;
 import Model.Usuario;
+import Model.PlayList;
+
 import View.Menu;
 import View.Playlists;
-import Model.PlayList;
+
 import DAO.PlaylistDAO;
 import DAO.Conexao;
+
 import javax.swing.JOptionPane;
+import javax.swing.JList;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import javax.swing.JList;
-import javax.swing.DefaultListModel;
-import DAO.MusicaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.security.Timestamp;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
 
 public class PlaylistController {
     private Playlists tela_playlist;
@@ -31,7 +33,9 @@ public class PlaylistController {
     
     public void aviso(){
         JOptionPane.showMessageDialog(null,"Nesta tela você pode alternar entre Músicas e Playlists\n"+
+                "\n"+
                 "Dando um clique duplo quando selecionar/pesquisar músicas, você pode adiciona-las a alguma Playlist\n"+
+                "\n"+
                 "Agora quando selecionar playlists, pode ver quais são as músicas em cada playlist");
     }
     
@@ -269,7 +273,7 @@ public class PlaylistController {
                             try {
                                 dao.deletarPlaylist(nomePlaylist, userId);
                                 JOptionPane.showMessageDialog(null, "Playlist excluída com sucesso!");
-                                buscarPlaylists(); // Atualiza a lista
+                                buscarPlaylists();
                             } catch (SQLException e) {
                                 JOptionPane.showMessageDialog(null, "Erro ao excluir a playlist.");
                                 e.printStackTrace();
@@ -277,11 +281,7 @@ public class PlaylistController {
                             }
                         }
                     }
-                        
-                        /*JOptionPane.showMessageDialog(null,
-                            String.join("\n", musicas),
-                            "Músicas da Playlist: " + nomePlaylist,
-                            JOptionPane.INFORMATION_MESSAGE);*/
+                       
                 } else {
                     JOptionPane.showMessageDialog(null,
                                                 "Esta playlist está vazia.",
@@ -310,7 +310,7 @@ public class PlaylistController {
     } catch (Exception e) {
         e.printStackTrace();
     }
-    return texto; // fallback se falhar
+    return texto;
     }
     public void VoltarMenu(){
         tela_playlist.setVisible(false);

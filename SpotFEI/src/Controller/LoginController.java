@@ -2,15 +2,20 @@ package Controller;
 
 import View.Entrada;
 import View.Menu;
+
 import Model.Usuario;
 import Model.SessaoUsuario;
 
 import DAO.Conexao;
 import DAO.UserDAO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class LoginController {
@@ -57,6 +62,22 @@ public class LoginController {
                                               JOptionPane.ERROR_MESSAGE);
             
         }
+    }
+    public void encerrar(){
+        JButton btnEncerrar = tela_login.getBotao_Encerrar();
+        btnEncerrar.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            int confirmar = JOptionPane.showConfirmDialog(
+                null,
+                "Obrigado pela visita, mas para confirmar!\nTem certeza que deseja sair?",
+                "Sair",
+                JOptionPane.YES_NO_OPTION
+            );
+            if (confirmar == JOptionPane.YES_OPTION) {
+                System.exit(0);
+            }
+        }
+    });
     }
     public void irParaMenu() {
         tela_login.getTxt_user_login().setText("");

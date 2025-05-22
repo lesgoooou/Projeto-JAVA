@@ -6,10 +6,14 @@
             <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/PlayList.java</file>
             <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/PlaylistController.java</file>
             <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/DAO/PlaylistDAO.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Menu.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Musica.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Playlists.java</file>
             <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/MenuController.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/DAO/MusicaDAO.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Menu.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Entrada.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Pessoa.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Artista.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Musica.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Usuario.java</file>
         </group>
     </open-files>
 </project-private>

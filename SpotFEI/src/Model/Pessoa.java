@@ -9,7 +9,6 @@ public abstract class Pessoa {
         this.id = id;
     }
     
-    // Getters e setters básicos
     public String getNome() {
         return nome;
     }
@@ -25,7 +24,6 @@ public abstract class Pessoa {
     public void setId(int id) {
         this.id = id;
     }
-    
-    // Método abstrato que cada subclasse deve implementar
+
     public abstract String toString();
 }
