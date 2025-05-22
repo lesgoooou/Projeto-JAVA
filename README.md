@@ -51,3 +51,6 @@ CREATE TABLE playlists (
     user_id VARCHAR(255),
     data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+LINK PARA VÍDEO: https://youtu.be/eG4VZLsgr3w
+LINK PARA GITHUB: https://github.com/lesgoooou/Projeto-JAVA.git

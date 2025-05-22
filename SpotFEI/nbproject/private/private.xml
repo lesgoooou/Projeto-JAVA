@@ -3,17 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/PlayList.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/PlaylistController.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/DAO/PlaylistDAO.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Playlists.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/MenuController.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Menu.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/LoginController.java</file>
             <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/View/Entrada.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Pessoa.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Artista.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Musica.java</file>
-            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Model/Usuario.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/MenuController.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/CadastroController.java</file>
+            <file>file:/C:/Users/bielr/Java/Projeto-JAVA/SpotFEI/src/Controller/HistoricoController.java</file>
         </group>
     </open-files>
 </project-private>
